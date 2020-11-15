@@ -1,6 +1,7 @@
 using System.Text;
 using medic_api.DAL;
 using medic_api.DAL.Repository;
+using medic_api.DAL.Repository.MedicalData;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -68,6 +69,7 @@ namespace medic_api
 
             services.AddSwaggerGen();
             services.AddTransient<IUserRepository, UsersRepository>();
+            services.AddTransient<IMedicalDataRepository, MedicalDataRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

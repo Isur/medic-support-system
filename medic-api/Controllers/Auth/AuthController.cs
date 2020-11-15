@@ -39,6 +39,7 @@ namespace medic_api.Controllers.Auth
                 {
                     new Claim(ClaimTypes.Name, user.UserName),
                     new Claim(ClaimTypes.Role, user.Role),
+                    new Claim(ClaimTypes.Sid, user.UserId.ToString()),
                 },
                 expires: DateTime.Now.AddHours(8),
                 signingCredentials: signingCredentials
