@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace medic_api.Controllers.Users
 {
     [ApiController]
-    [Route("users")]
+    [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
         private readonly IUserRepository _userRepository;

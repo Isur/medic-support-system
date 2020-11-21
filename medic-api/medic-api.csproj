@@ -22,5 +22,9 @@
       <Folder Include="Services" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\medic-ai\medic-ai.csproj" />
+    </ItemGroup>
+
 
 </Project>

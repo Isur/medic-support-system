@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using medic_ai;
 using medic_api.Controllers.MedicalData.DTO;
 using medic_api.DAL.Repository.MedicalData;
 using Microsoft.AspNetCore.Authorization;
@@ -97,16 +98,34 @@ namespace medic_api.Controllers.MedicalData
         [Authorize(Policy = "Doctor")]
         public ActionResult<string> SetResult(string id)
         {
-            return Ok("This is not implemented yet.");
+            Ai ai = new Ai();
+            var data = _medicalDataRepository.GetMedicalData(id);
+            PredictionModel model = new PredictionModel()
+            {
+                Age = data.Age,
+                Bmi = (float) data.Bmi,
+                Glucose = data.Glucose,
+                Insulin = data.Insulin,
+                Pregnancies = data.Pregnancies,
+                BloodPressure = data.BloodPressure,
+                SkinThickness = data.SkinThickness,
+                DiabetesPedigreeFunction = (float) data.DiabetesPedigreeFunction,
+
+            };
+            var result = ai.Predict(model);
+            _medicalDataRepository.SetPrediction(id, result.Prediction);
+            return Ok(result);
         }
 
         [HttpPost]
         [Route("learn")]
         [Authorize(Policy = "Admin")]
-        public ActionResult Learn()
+        public ActionResult<double> Learn()
         {
-            // start learning process based on existing data
-            return Ok();
+            Ai ai = new Ai();
+            var accuracy = ai.InitialLearning();
+            // TODO: learning with data from database
+            return Ok(accuracy);
         }
     }
 }
