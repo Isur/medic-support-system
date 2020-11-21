@@ -57,28 +57,28 @@ namespace medic_api.Controllers.Auth
             return Ok(response);
         }
 
-        [HttpPost, Route("register")]
-        public async Task<ActionResult<RegisterResponse>> Register([FromBody] RegisterRequest body)
-        {
-            AddUserModel model = new AddUserModel()
-            {
-                Role = "Patient",
-                FirstName = body.Firstname,
-                LastName = body.LastName,
-                UserName = body.UserName,
-                Password = PasswordHasher.Hash(body.Password),
-            };
-            var userId = _userRepository.AddUser(model);
-            RegisterResponse response = new RegisterResponse()
-            {
-                Firstname = model.FirstName,
-                Id = userId,
-                Role = model.Role,
-                LastName = model.LastName,
-                UserName = model.UserName,
-            };
-
-            return Ok(response);
-        }
+        // [HttpPost, Route("register")]
+        // public async Task<ActionResult<RegisterResponse>> Register([FromBody] RegisterRequest body)
+        // {
+        //     AddUserModel model = new AddUserModel()
+        //     {
+        //         Role = "Patient",
+        //         FirstName = body.Firstname,
+        //         LastName = body.LastName,
+        //         UserName = body.UserName,
+        //         Password = PasswordHasher.Hash(body.Password),
+        //     };
+        //     var userId = _userRepository.AddUser(model);
+        //     RegisterResponse response = new RegisterResponse()
+        //     {
+        //         Firstname = model.FirstName,
+        //         Id = userId,
+        //         Role = model.Role,
+        //         LastName = model.LastName,
+        //         UserName = model.UserName,
+        //     };
+        //
+        //     return Ok(response);
+        // }
     }
 }

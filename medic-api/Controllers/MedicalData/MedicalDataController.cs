@@ -99,5 +99,14 @@ namespace medic_api.Controllers.MedicalData
         {
             return Ok("This is not implemented yet.");
         }
+
+        [HttpPost]
+        [Route("learn")]
+        [Authorize(Policy = "Admin")]
+        public ActionResult Learn()
+        {
+            // start learning process based on existing data
+            return Ok();
+        }
     }
 }
