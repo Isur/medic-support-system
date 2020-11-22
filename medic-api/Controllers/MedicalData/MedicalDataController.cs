@@ -123,8 +123,40 @@ namespace medic_api.Controllers.MedicalData
         public ActionResult<double> Learn()
         {
             Ai ai = new Ai();
+            var data = _medicalDataRepository.GetMedicalDataList().Where(d => d.Result != null).ToList();
+            var preparedList = new List<ModelInput>();
+            foreach (var medicalData in data)
+            {
+                var item = new ModelInput()
+                {
+                    Age = medicalData.Age,
+                    Bmi = (float)medicalData.Bmi,
+                    Glucose = medicalData.Glucose,
+                    Insulin = medicalData.Insulin,
+                    Outcome = medicalData.Result != null && (bool) medicalData.Result,
+                    Pregnancies = medicalData.Pregnancies,
+                    BloodPressure = medicalData.BloodPressure,
+                    SkinThickness = medicalData.SkinThickness,
+                    DiabetesPedigreeFunction = (float) medicalData.DiabetesPedigreeFunction,
+                };
+                preparedList.Add(item);
+            }
+
+            if (preparedList.Count < 15)
+            {
+                return Problem("Not enough data");
+            }
+            var accuracy = ai.DatabaseLearning(preparedList);
+            return Ok(accuracy);
+        }
+
+        [HttpPost]
+        [Route("learnfromfile")]
+        [Authorize(Policy = "Admin")]
+        public ActionResult<double> LearnFromFile()
+        {
+            Ai ai = new Ai();
             var accuracy = ai.InitialLearning();
-            // TODO: learning with data from database
             return Ok(accuracy);
         }
     }

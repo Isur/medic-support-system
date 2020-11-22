@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using Microsoft.ML;
+using Microsoft.ML.Data;
 using Microsoft.ML.Trainers;
 
 namespace medic_ai
@@ -49,11 +52,16 @@ namespace medic_ai
                 InitialTraining();
             } 
         }
-        
-        public double InitialTraining()
+
+        public double TrainingWithDatabase(List<ModelInput> listData)
         {
             var ctx = new MLContext();
-            var data = ctx.Data.LoadFromTextFile<ModelInput>(path: _filePath, hasHeader: true, separatorChar: ',');
+            IDataView data = ctx.Data.LoadFromEnumerable<ModelInput>(listData);
+            return Training(data, ctx);
+        }
+
+        private double Training(IDataView data, MLContext ctx)
+        {
             var split = ctx.Data.TrainTestSplit(data, testFraction: 0.25);
 
             var features = split.TrainSet.Schema
@@ -70,26 +78,19 @@ namespace medic_ai
 
             var predictions = model.Transform(split.TestSet);
 
-            // var metrics = ctx.Regression.Evaluate(predictions);
             var metrics = ctx.BinaryClassification.Evaluate(predictions);
-
-            var m = new ModelInput()
-            {
-                Pregnancies = 0,
-                Glucose = 137,
-                BloodPressure = 40,
-                SkinThickness = 35,
-                Insulin = 168,
-                Bmi = 43.1f,
-                DiabetesPedigreeFunction = 2.288f,
-                Age = 33,
-                Outcome = true
-            };
 
             Console.WriteLine($"Accuracy - {metrics.Accuracy}");
             ctx.Model.Save(model, data.Schema, "model.zip");
             _model = model;
             return metrics.Accuracy;
+        }
+        
+        public double InitialTraining()
+        {
+            var ctx = new MLContext();
+            var data = ctx.Data.LoadFromTextFile<ModelInput>(path: _filePath, hasHeader: true, separatorChar: ',');
+            return Training(data, ctx);
         }
     }
 }

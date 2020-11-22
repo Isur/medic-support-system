@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 
@@ -20,6 +21,11 @@ namespace medic_ai
         public ModelOutput Predict(PredictionModel input)
         {
             return _model.Predict(input);
+        }
+
+        public double DatabaseLearning(List<ModelInput> data)
+        {
+            return _model.TrainingWithDatabase(data);
         }
     }
 }
