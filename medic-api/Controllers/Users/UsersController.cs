@@ -4,6 +4,7 @@ using System.Security.Claims;
 using medic_api.DAL;
 using medic_api.DAL.Models;
 using medic_api.DAL.Repository;
+using medic_api.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,12 +37,13 @@ namespace medic_api.Controllers.Users
         [Route("me")]
         public ActionResult<string> PatchProfile([FromBody] UpdateUserModel body)
         {
+            var dataEncryptor = new DataEncryptor();
             var userId = this.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid)?.Value;
             var updateUser = new UpdateUserModel()
             {
                 Password = Helpers.PasswordHasher.Hash(body.Password),
                 Role = body.Role,
-                FirstName = body.FirstName,
+                FirstName = dataEncryptor.Encrypt(body.FirstName),
                 LastName = body.LastName,
                 UserName = body.UserName,
             };

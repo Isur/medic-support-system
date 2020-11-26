@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "medic-api", "medic-api\medi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "medic-ai", "medic-ai\medic-ai.csproj", "{A7670838-524A-4A60-BCF0-2E87224DA1B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "medic-test", "medic-test\medic-test.csproj", "{C79A9B3D-6E51-4329-A084-BCA742EA23D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{A7670838-524A-4A60-BCF0-2E87224DA1B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7670838-524A-4A60-BCF0-2E87224DA1B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7670838-524A-4A60-BCF0-2E87224DA1B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C79A9B3D-6E51-4329-A084-BCA742EA23D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C79A9B3D-6E51-4329-A084-BCA742EA23D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C79A9B3D-6E51-4329-A084-BCA742EA23D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C79A9B3D-6E51-4329-A084-BCA742EA23D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
