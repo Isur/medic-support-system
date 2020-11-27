@@ -31,7 +31,7 @@ namespace medic_api
                 {
                     builder
                         .AllowAnyOrigin()
-                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
                         .AllowAnyHeader();
                 });
             });
