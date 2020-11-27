@@ -4,6 +4,7 @@ using System.Security.Claims;
 using medic_api.DAL;
 using medic_api.DAL.Models;
 using medic_api.DAL.Repository;
+using medic_api.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,13 +37,14 @@ namespace medic_api.Controllers.Users
         [Route("me")]
         public ActionResult<string> PatchProfile([FromBody] UpdateUserModel body)
         {
+            var dataEncryptor = new RSA();
             var userId = this.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid)?.Value;
             var updateUser = new UpdateUserModel()
             {
                 Password = Helpers.PasswordHasher.Hash(body.Password),
                 Role = body.Role,
-                FirstName = body.FirstName,
-                LastName = body.LastName,
+                FirstName = dataEncryptor.Encrypt(body.FirstName),
+                LastName = dataEncryptor.Encrypt(body.LastName),
                 UserName = body.UserName,
             };
             var user = _userRepository.UpdateUser(updateUser, userId);
@@ -77,6 +79,7 @@ namespace medic_api.Controllers.Users
         [Authorize(Policy = "Doctor")]
         public ActionResult<string> Post([FromBody] AddUserRequest body)
         {
+            var dataEncryptor = new RSA();
             if (body.Role == "Doctor" || body.Role == "Admin")
             {
                 var role = this.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
@@ -86,8 +89,8 @@ namespace medic_api.Controllers.Users
             {
                 Password = Helpers.PasswordHasher.Hash(body.Password),
                 Role = body.Role,
-                FirstName = body.Firstname,
-                LastName = body.LastName,
+                FirstName = dataEncryptor.Encrypt(body.FirstName),
+                LastName = dataEncryptor.Encrypt(body.LastName),
                 UserName = body.UserName,
             };
             var user = _userRepository.AddUser(newUser);
@@ -99,12 +102,13 @@ namespace medic_api.Controllers.Users
         [Route("{id}")]
         public ActionResult<string> Patch(string id, [FromBody] UpdateUserModel body)
         {
+            var dataEncryptor = new RSA();
             var updateUser = new UpdateUserModel()
             {
                 Password = Helpers.PasswordHasher.Hash(body.Password),
                 Role = body.Role,
-                FirstName = body.FirstName,
-                LastName = body.LastName,
+                FirstName = dataEncryptor.Encrypt(body.FirstName),
+                LastName = dataEncryptor.Encrypt(body.LastName),
                 UserName = body.UserName,
             };
             var user = _userRepository.UpdateUser(updateUser, id);

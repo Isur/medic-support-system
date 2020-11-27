@@ -14,12 +14,13 @@ namespace medic_api.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            var rsa = new RSA();
             modelBuilder.Entity<User>().HasData(new User
             {
                 Role = "Admin",
                 Password = PasswordHasher.Hash("Admin"),
-                FirstName = "Admin",
-                LastName = "Admin",
+                FirstName = rsa.Encrypt("Admin"),
+                LastName = rsa.Encrypt("Admin"),
                 UserName = "Admin",
                 UserId = Guid.NewGuid(),
             });
