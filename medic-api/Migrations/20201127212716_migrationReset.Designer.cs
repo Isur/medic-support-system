@@ -10,8 +10,8 @@ using medic_api.DAL;
 namespace medic_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201115000818_SeedAdmin")]
-    partial class SeedAdmin
+    [Migration("20201127212716_migrationReset")]
+    partial class migrationReset
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,10 +113,10 @@ namespace medic_api.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("1e32f9b5-5a9c-4e65-8ee3-7cf22fb3b1ab"),
-                            FirstName = "Admin",
-                            LastName = "Admin",
-                            Password = "r6gZh6ISsCXAWQMr47hysUEEf+RiPESHdIcyGD4W3kPF62Uo",
+                            UserId = new Guid("d7612574-c9e2-44ef-a205-534a014cca28"),
+                            FirstName = "ChldCDmksoapL7JDnkb6cfgJLWw8aoNwQKJB7uOfcV+1y5FaZz7qht7+INjAhUx2Z3S6mJY/gMwnsL6ro8Wx98RxYQRRWxj9XaTHFVYQYPgJDhE+0/+2NrRdIkCQqK4OlDd3DUZYTAVzEkPU7h/0PS4Ee6pZeqkD33n+bWA1a7lfjeeys7OYBQtImVHF2eKGOA/ENQV1OeF98UCUBTKi18Gd6OjtoPugRelGuMvxTs2CFpzhzhBLNhsa6CP2iO21nXb8BQ0hTECpy1jIZ0ovi9aEJKRzDAEFQ9+CCBcW1yyfiK5bx9DQr1ak2PNwmNfYov3jD9LBLtY0s42sGP9Jpw==",
+                            LastName = "C/yYBUWwputnk9bJnuqo2VdjZukl4S8OBjmUZhVipWWSxawLZ9YDEXroN3TpCLVcAB/z/MpEOTyANe/pqg9TzI2ds8Ljw8ueKwYVeO+tP+YWkAysGstNP210TkpRuDN1SWqdNHzHmoDNZngaWbhc/HWCj8eDAsr+9w3nqFAMwoGn8/HpbN4kdLlF5crnWVTRMZwGyJhjxpgeVJGdQOM85ncIWEC1djNKsgxsLb+Rutg7aOOxy/eF//yeJdMjrMwaVjCXl1uYkwieNhsX9D3XHGIenueNVtDHG4tEvxo5pZqi4k7IyuRdqZwrPp20UFyuefoIBbLj/dWeAoVClIM89g==",
+                            Password = "apJAmHNc8LQ4bBOo9mGNVIpU5KxAAb6kBYi3Snnqzyo9msUl",
                             Role = "Admin",
                             UserName = "Admin"
                         });

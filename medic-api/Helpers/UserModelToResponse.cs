@@ -7,11 +7,12 @@ namespace medic_api.Helpers
     {
         public static UserResponse UserToResponse(User user)
         {
+            var dataEncryptor = new RSA();
             return new UserResponse()
             {
                 Role = user.Role,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
+                FirstName = dataEncryptor.Decrypt(user.FirstName),
+                LastName = dataEncryptor.Decrypt(user.LastName),
                 UserId = user.UserId.ToString(),
                 UserName = user.UserName,
             };

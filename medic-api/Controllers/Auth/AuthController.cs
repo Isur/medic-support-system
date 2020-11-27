@@ -29,6 +29,7 @@ namespace medic_api.Controllers.Auth
         [HttpPost, Route("login")]
         public async Task<ActionResult<LoginResponse>> Login([FromBody] LoginRequest body)
         {
+            var dataEncryptor = new RSA();
             var user = _userRepository.GetUserByUserName(body.UserName);
             if (user == null) return Unauthorized("Wrong username or password!");
             if(!PasswordHasher.Verify(body.Password, user.Password)) return Unauthorized("Wrong username or password!");
@@ -47,10 +48,10 @@ namespace medic_api.Controllers.Auth
             var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
             LoginResponse response = new LoginResponse()
             {
-                Firstname = user.FirstName,
+                Firstname = dataEncryptor.Decrypt(user.FirstName),
                 Id = user.UserId.ToString(),
                 Role = user.Role,
-                LastName = user.LastName,
+                LastName = dataEncryptor.Decrypt(user.LastName),
                 UserName = user.UserName,
                 Token = tokenString,
             };

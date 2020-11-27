@@ -7,25 +7,14 @@ namespace medic_test
 {
     public class Encryptor
     {
-        private readonly ITestOutputHelper _testOutputHelper;
-
-        public Encryptor(ITestOutputHelper testOutputHelper)
-        {
-            _testOutputHelper = testOutputHelper;
-        }
-
         [Fact]
         public void Encrypt()
         {
             RSA rsa = new RSA();
-            _testOutputHelper.WriteLine(rsa.PublicKeyString());
-            
-            string testCase = "Some random test";
-            _testOutputHelper.WriteLine(testCase);
+            RSA rsa2 = new RSA();
+            string testCase = "Admin123 jakis test /n\n";
             var encrypted= rsa.Encrypt(testCase);
-            _testOutputHelper.WriteLine(encrypted);
-            var decrypted = rsa.Decrypt(encrypted);
-            _testOutputHelper.WriteLine(decrypted);
+            var decrypted = rsa2.Decrypt(encrypted);
             Assert.Equal(testCase, decrypted);
         }
     }

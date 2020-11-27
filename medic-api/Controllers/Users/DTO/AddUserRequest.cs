@@ -10,7 +10,7 @@ namespace medic_api.Controllers.Users
         [JsonRequired]
         public string UserName { get; set; }
         [JsonRequired]
-        public string Firstname { get; set; }
+        public string FirstName { get; set; }
         [JsonRequired]
         public string LastName { get; set; }
         [JsonRequired, MinLength(4), MaxLength(16)]
