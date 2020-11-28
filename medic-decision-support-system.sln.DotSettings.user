@@ -3,5 +3,8 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9d0ffdf7_002D147d_002D41af_002D8220_002Dad327fb92d63/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Encryptor" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::C79A9B3D-6E51-4329-A084-BCA742EA23D0::.NETCoreApp,Version=v3.1::medic_test.Encryptor&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::C79A9B3D-6E51-4329-A084-BCA742EA23D0::.NETCoreApp,Version=v3.1::medic_test.Hasher&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::C79A9B3D-6E51-4329-A084-BCA742EA23D0::.NETCoreApp,Version=v3.1::medic_test.Controllers.AppControllerTest&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::C79A9B3D-6E51-4329-A084-BCA742EA23D0::.NETCoreApp,Version=v3.1::medic_test.Controllers.MedicalDataControllerTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
