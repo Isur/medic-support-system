@@ -10,7 +10,7 @@ using medic_api.DAL;
 namespace medic_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201127212716_migrationReset")]
+    [Migration("20201128112027_migrationReset")]
     partial class migrationReset
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -113,10 +113,10 @@ namespace medic_api.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("d7612574-c9e2-44ef-a205-534a014cca28"),
-                            FirstName = "ChldCDmksoapL7JDnkb6cfgJLWw8aoNwQKJB7uOfcV+1y5FaZz7qht7+INjAhUx2Z3S6mJY/gMwnsL6ro8Wx98RxYQRRWxj9XaTHFVYQYPgJDhE+0/+2NrRdIkCQqK4OlDd3DUZYTAVzEkPU7h/0PS4Ee6pZeqkD33n+bWA1a7lfjeeys7OYBQtImVHF2eKGOA/ENQV1OeF98UCUBTKi18Gd6OjtoPugRelGuMvxTs2CFpzhzhBLNhsa6CP2iO21nXb8BQ0hTECpy1jIZ0ovi9aEJKRzDAEFQ9+CCBcW1yyfiK5bx9DQr1ak2PNwmNfYov3jD9LBLtY0s42sGP9Jpw==",
-                            LastName = "C/yYBUWwputnk9bJnuqo2VdjZukl4S8OBjmUZhVipWWSxawLZ9YDEXroN3TpCLVcAB/z/MpEOTyANe/pqg9TzI2ds8Ljw8ueKwYVeO+tP+YWkAysGstNP210TkpRuDN1SWqdNHzHmoDNZngaWbhc/HWCj8eDAsr+9w3nqFAMwoGn8/HpbN4kdLlF5crnWVTRMZwGyJhjxpgeVJGdQOM85ncIWEC1djNKsgxsLb+Rutg7aOOxy/eF//yeJdMjrMwaVjCXl1uYkwieNhsX9D3XHGIenueNVtDHG4tEvxo5pZqi4k7IyuRdqZwrPp20UFyuefoIBbLj/dWeAoVClIM89g==",
-                            Password = "apJAmHNc8LQ4bBOo9mGNVIpU5KxAAb6kBYi3Snnqzyo9msUl",
+                            UserId = new Guid("2440bd90-d285-4b5b-b6e8-f8808c101763"),
+                            FirstName = "yFdWByrf/mq61BKxY6tsxc7eqkFU0ytljU9G6yyet2S1i/UV4X8+bQq7TntEHe3CBgBGzuBiXi0GaWeGDMTeTou0+YN2cQYlt5xh6qHhREAHK1UHWcfaqySpUhz4bCRBDxbY3KBuNr3dn2E/GDc61fn8tQjm4emE33e9utwoECU1BqrJ0yxa4/vjd8lPVoQJlnvi7XWFJ9tC2aJbQmDgNOEdlBQ8w72XNkednD9T5r5ugmVT8JJ3YS+Xc0d16tqMMqHXmHAk3nJAJW5xULLFlK6OkMpJVXjLiP/ieUDS5Y/a3p4TWj8C2f3fPh1N/gHq5/gk9uCGfdHTPPtC2jlBEA==",
+                            LastName = "aBGT9HXVi/8Q7GtmPX+aQbimBRjQl8vaCtNmh0MlT3BuEvewZ7DkJfgFz00XUFb4t36PWZg+w+i0dW8/BgMyGjOMTWsH+w0KDww72G2hPf/6iT5bKooDRi0IK7nf0Lj0YV0PgfChmiwzzld/X6xmKSp7LR4HMC+j6VBXvtpM6Vl0OTteftD4cf70WBd+CU0TJJ1+Qq+Ww7sN10RJ/dnTfyUpHuvxnl36MB9/2kYdZWvwdnTaV+mrvtJP3ZvR8niqOqoijomm+tKH/CS8+t+J66dyfeaAIdYFRkrKkw0xjqjc29tcnXep4OdBevfvu8hGwDNBvFvPbEjYtjbXrwEGdA==",
+                            Password = "vFW18BRQhMgpyPbKegfXukkcTBL0Xoi4BSVPU2MqIAFsJ7ZP",
                             Role = "Admin",
                             UserName = "Admin"
                         });
