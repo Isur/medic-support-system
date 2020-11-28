@@ -48,7 +48,7 @@ namespace medic_api.Controllers.Auth
             var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
             LoginResponse response = new LoginResponse()
             {
-                Firstname = dataEncryptor.Decrypt(user.FirstName),
+                FirstName = dataEncryptor.Decrypt(user.FirstName),
                 Id = user.UserId.ToString(),
                 Role = user.Role,
                 LastName = dataEncryptor.Decrypt(user.LastName),
