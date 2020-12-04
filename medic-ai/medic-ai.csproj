@@ -8,6 +8,7 @@
     <ItemGroup>
       <PackageReference Include="Keras.NET" Version="3.8.4.4" />
       <PackageReference Include="Microsoft.ML" Version="1.5.2" />
+      <PackageReference Include="Microsoft.ML.FastTree" Version="1.5.2" />
     </ItemGroup>
 
 </Project>

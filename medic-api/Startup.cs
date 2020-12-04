@@ -27,13 +27,14 @@ namespace medic_api
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll", builder =>
-                {
-                    builder
-                        .AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
-                });
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                    });
             });
             
             services.AddAuthentication(options =>
@@ -87,7 +88,7 @@ namespace medic_api
                 swagger.SwaggerEndpoint("/swagger/v1/swagger.json", "Medic DSS v1.0");
             });
             
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
             app.UseAuthentication();
